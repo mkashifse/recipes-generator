@@ -2,12 +2,16 @@ import { useContext } from "react";
 import AppContext from "../hooks/AppContext";
 
 export default function IngredientList(props: any) {
-  const { filteredIngredients, filterIngredients, searchRecipes } =
-    useContext(AppContext);
+  const {
+    filteredIngredients,
+    filterIngredients,
+    searchRecipes,
+    setSelectedIngredient,
+  } = useContext(AppContext);
 
   const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const { value } = e.target as HTMLInputElement;
-    filterIngredients!(value);
+    filterIngredients(value);
   };
 
   return (
@@ -22,9 +26,12 @@ export default function IngredientList(props: any) {
         />
       </div>
       <div className="flex-1 overflow-scroll cursor-pointer">
-        {filteredIngredients!.map((ingredient) => (
+        {filteredIngredients.map((ingredient) => (
           <div
-            onClick={() => searchRecipes!(ingredient.strIngredient)}
+            onClick={() => {
+              setSelectedIngredient(ingredient);
+              searchRecipes(ingredient.strIngredient);
+            }}
             className="p-2 rounded-lg px-2 space-x-4 border-b border-gray-100 hover:bg-blue-100 flex  items-center"
             key={ingredient.idIngredient}
           >
