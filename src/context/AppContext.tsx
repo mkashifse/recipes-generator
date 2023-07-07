@@ -1,23 +1,18 @@
 import React, { createContext } from "react";
-import useRecipe, { useRecipeType } from "./useRecipe";
-import useIngredient, { useIngredientsType } from "./useIngredient";
+import useRecipe, { useRecipeType } from "../hooks/useRecipe";
+import useIngredient, { useIngredientsType } from "../hooks/useIngredient";
 
-// Define the shape of the user context
 interface AppContextData extends useIngredientsType, useRecipeType {}
 
 interface UserProviderProps {
   children: React.ReactNode;
 }
 
-// Create the user context with initial values
 const AppContext = createContext<AppContextData>({} as any);
 
-// Create the AppProvider component
 export const AppProvider: React.FC<UserProviderProps> = ({ children }: any) => {
   const recipe = useRecipe();
   const ingredient = useIngredient();
-
-
   return (
     <AppContext.Provider
       value={{
