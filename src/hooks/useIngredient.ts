@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Ingredient } from "../types/types";
 import { fetchAllIngredients } from "../services/IngredientsService";
 
-export default function useIngredients() {
+export default function useIngredient() {
     const [ingredients, setIngredients] = useState<Ingredient[]>([]);
     const [filteredIngredients, setFilteredIngredients] = useState<Ingredient[]>([]);
 
@@ -15,7 +15,7 @@ export default function useIngredients() {
         init();
     }, [])
 
-    const filter = (searchTerm: string) => {
+    const filterIngredients = (searchTerm: string) => {
         setFilteredIngredients(ingredients.filter((ingredient) => ingredient.strIngredient.toLowerCase().includes(searchTerm.toLowerCase())))
     }
 
@@ -23,7 +23,10 @@ export default function useIngredients() {
     return {
         ingredients,
         filteredIngredients,
-        filter
+        filterIngredients
     }
 
 }
+
+export type useIngredientsType = ReturnType<typeof useIngredient>;
+
