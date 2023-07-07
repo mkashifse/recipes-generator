@@ -1,14 +1,16 @@
 export type Ingredient = {
-    idIngredient: string;
+    idIngredient?: string;
     strIngredient: string;
-    strDescription: string;
-    strType: null | string;
+    strDescription?: string;
+    strType?: string;
+    measure: string;
+    thumbnail: string;
 };
 
 export type Recipe = {
     idMeal: string;
     strMeal: string;
-    strDrinkAlternate: null;
+    strDrinkAlternate: string;
     strCategory: string;
     strArea: string;
     strInstructions: string;
@@ -31,11 +33,11 @@ export type Recipe = {
     strIngredient13: string;
     strIngredient14: string;
     strIngredient15: string;
-    strIngredient16: null;
-    strIngredient17: null;
-    strIngredient18: null;
-    strIngredient19: null;
-    strIngredient20: null;
+    strIngredient16: string;
+    strIngredient17: string;
+    strIngredient18: string;
+    strIngredient19: string;
+    strIngredient20: string;
     strMeasure1: string;
     strMeasure2: string;
     strMeasure3: string;
@@ -51,14 +53,15 @@ export type Recipe = {
     strMeasure13: string;
     strMeasure14: string;
     strMeasure15: string;
-    strMeasure16: null;
-    strMeasure17: null;
-    strMeasure18: null;
-    strMeasure19: null;
-    strMeasure20: null;
-    strSource: null;
-    strImageSource: null;
-    strCreativeCommonsConfirmed: null;
-    dateModified: null;
+    strMeasure16: string;
+    strMeasure17: string;
+    strMeasure18: string;
+    strMeasure19: string;
+    strMeasure20: string;
+    strSource: string;
+    strImageSource: string;
+    strCreativeCommonsConfirmed: string;
+    dateModified: string;
+    [key: string]: string | Ingredient[] | any;
 }
 
